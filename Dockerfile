@@ -11,10 +11,10 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-COPY public/ /app
+WORKDIR /var/www/html
 
-WORKDIR /app
+COPY public/ /var/www/html/
 
-CMD ["php", "-S", "0.0.0.0:80", "-t", "/app"]
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "/var/www/html"]
 
-EXPOSE 80
+EXPOSE 8080
