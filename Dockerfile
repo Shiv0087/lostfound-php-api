@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-COPY public/ /var/www/html/
+COPY public/ /app
+
+WORKDIR /app
+
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/app"]
 
 EXPOSE 80
