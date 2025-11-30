@@ -1,2 +1,2 @@
 <?php
-echo "Lost & Found API is running!";
+echo "API is running!";
