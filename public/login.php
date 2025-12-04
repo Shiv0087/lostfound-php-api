@@ -1,10 +1,12 @@
 <?php
+header("Content-Type: application/json");
 require 'db_config.php';
 
-$email = $_POST['email'];$password = $_POST['password'];
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
 
 if (empty($email) || empty($password)) {
-    echo json_encode(["status" => "error", "message" => "Email and password are required"]);
+    echo json_encode(["status" => "error", "message" => "Email and password required"]);
     exit();
 }
 
